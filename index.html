@@ -4,9 +4,60 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>rock paper scissors</title>
 </head>
 <body>
-    
+    <script>
+
+      function computerplay()
+      {
+          let value=Math.floor(Math.random()*3)+1;
+          if (value===1)return 'rock';
+          else if (value===2)return 'paper';
+          else return 'scissors';
+      }
+      let computerselection;
+      let playerselection;
+      let computerscore=0,playerscore=0;
+
+      
+
+      function playround(playerselection,computerselction)
+      {
+
+        if (playerselection===computerselction)
+          {
+              return 'tie game';
+          }
+          else if((playerselection==='rock' && computerselction==='paper') ||
+                  (playerselection==='paper'&& computerselction==='scissors') ||
+                  (playerselection==='scissors'&& computerselction==='rock'))
+          {
+              computerscore++;
+              return ('computer wins the round');
+          }
+          else 
+          {
+              playerscore++;
+              return ('you wins the round');
+          }
+      }
+      
+       
+      function game(){
+          for(let i=1;i<=5;i++)
+          {
+             playerselection=prompt(`enter your choice of RPS `).toLowerCase();
+             console.log(`ply sel ${playerselection}`);  
+             computerselection=computerplay();
+             console.log(`com sel ${computerselection}`);
+             console.log(playround(playerselection,computerselection));
+          }
+          return (playerscore>computerscore)?`player wins with ${playerscore} pts`:`computer wins with ${computerscore} pts`;
+      }
+      
+      let finalresult=game();
+      console.log(finalresult);
+    </script>
 </body>
 </html>
